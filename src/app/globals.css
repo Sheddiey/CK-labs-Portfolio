@@ -2,32 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+/* styles/globals.css */
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #2f2680 transparent; /* Firefox */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Webkit browsers */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 2px;
+  height: 4px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: #2f2680;
+  border-radius: 1px;
+}
+
+/* Hide scrollbars completely */
+.hide-scrollbar {
+  overflow: hidden;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }

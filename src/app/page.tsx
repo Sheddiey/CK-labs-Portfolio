@@ -1,113 +1,89 @@
+"use client";
+
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { DownloadIcon } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import sheddiey from "../../public/sheddiey.jpg";
+import react from "../../public/react-original.svg";
+import css3 from "../../public/css3-original.svg";
+import firebase from "../../public/firebase-plain.svg";
+import html5 from "../../public/html5-original.svg";
+import javaScript from "../../public/javascript-original.svg";
+import nextjs from "../../public/nextjs-original.svg";
+import node from "../../public/nodejs-original.svg";
+import tailwind from "../../public/tailwindcss-plain.svg";
+import typeScript from "../../public/typescript-original.svg";
+import CardWrapper from "@/components/CardWrapper";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <MaxWidthWrapper>
+      <CardWrapper>
+        <div className="grid px-5 items-center h-[calc(100vh-3.5rem)]">
+          <div className="grid space-x-5 grid-cols-2">
+            <motion.div
+              whileInView={{
+                x: 0,
+              }}
+              initial={{ x: -60 }}
+              transition={{ duration: 1 }}
+              className="flex space-y-5 flex-col justify-center"
+            >
+              <p className="font-bold text-4xl">Helo, I&apos;m</p>
+              <span className="text-blue_5 text-4xl font-bold">
+                Shadrack Cheruiyot
+              </span>
+              <p className="text-white">
+                I&apos;m a web developer, passionate about crafting accessible
+                and user-friendly websites. With expertise in React for dynamic
+                interfaces and Tailwind CSS for sleek designs, I ensure your
+                site looks great on any device. Leveraging Git for collaboration
+                and Firebase for backend needs, I&apos;m committed to delivering
+                top-notch web solutions. I am seeking a full-time position as a
+                Front-end Web Developer.
+              </p>
+              <div className="flex space-x-4 mt-5">
+                <button className="bg-blue_5 text-white py-2 px-4 rounded-lg">
+                  Hire Me
+                </button>
+                <button className="flex items-center">
+                  Download CV
+                  <DownloadIcon />
+                </button>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0.6 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <Image
+                className="rounded-tl-[40%] rounded-br-[40%] border-2 border-blue_5"
+                height={390}
+                src={sheddiey}
+                alt="Sheddiey"
+              />
+            </motion.div>
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="flex justify-center gap-4"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <Image src={react} alt="CSS3" width={40} height={40} />
+            <Image src={javaScript} alt="JavaScript" width={40} height={40} />
+            <Image src={typeScript} alt="Ts" width={40} height={40} />
+            <Image src={tailwind} alt="Tailwind CSS" width={40} height={40} />
+            <Image src={css3} alt="CSS3" width={40} height={40} />
+            <Image src={html5} alt="HTML5" width={40} height={40} />
+            <Image src={firebase} alt="Firebaase" width={40} height={40} />
+            <Image src={node} alt="Node" width={40} height={40} />
+            <Image src={nextjs} alt="Nextjs" width={40} height={40} />
+          </motion.div>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </CardWrapper>
+    </MaxWidthWrapper>
   );
 }
