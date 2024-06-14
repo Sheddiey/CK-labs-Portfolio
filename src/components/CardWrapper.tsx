@@ -8,7 +8,11 @@ const CardWrapper = ({
   children?: ReactNode;
 }) => {
   return (
-    <div className="mt-5 rounded-xl bg-blue_2/50 backdrop-blur-sm">{children}</div>
+    <div
+      className={`mt-5 rounded-xl bg-green-900/50 shadow-black shadow-lg backdrop-blur-[2px] ${className}`}
+    >
+      {children}
+    </div>
   );
 };
 

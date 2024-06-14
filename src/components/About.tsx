@@ -3,17 +3,19 @@
 import { motion } from "framer-motion";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import CardWrapper from "./CardWrapper";
+import aboutImg from '../../public/manhattan-3866140.jpg'
+import Image from "next/image";
 
 const About = () => {
   return (
     <MaxWidthWrapper>
       <CardWrapper>
-        <div className="bg-blue_2/50 p-5 rounded-xl ">
-          <p className="text-centerfont-bold text-2xl mb-5 text-blue_1">
+        <div className="p-5 rounded-xl ">
+          <p className="text-center font-bold text-2xl mb-5 text-white">
             About me
           </p>
-          <div className="overflow-hidden grid grid-cols-2 mb-10">
-            <div>kk</div>
+          <div className="overflow-hidden gap-5 grid grid-cols-2 mb-10">
+            <div><Image src={aboutImg} alt="about Image"/></div>
             <motion.div
               whileInView={{
                 x: 0,
@@ -21,7 +23,7 @@ const About = () => {
               initial={{ x: 60 }}
               transition={{ duration: 1 }}
             >
-              <p className="text-left">
+              <p className="text-white">
                 As a web developer passionate about crafting accessible and
                 user-friendly websites, I bring expertise in React and Next.js
                 for dynamic, server-side rendered interfaces, and Tailwind CSS

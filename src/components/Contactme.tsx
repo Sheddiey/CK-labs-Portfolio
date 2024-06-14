@@ -11,21 +11,21 @@ const Contactme = () => {
         <div className="grid grid-cols-2 p-5 space-x-10 my-10 py-5 ">
           <div>
             <form className="space-y-4 grid">
-              <p className="font-bold text-2xl">
+              <p className="font-bold text-white text-2xl">
                 Get in <span className="text-blue_5">Touch</span>
               </p>
-              <Input type="text" placeholder="Full Name" required />
-              <Input type="text" placeholder="Email" required />
-              <TextArea placeholder="Message" required />
+              <Input className="bg-white/90" type="text" placeholder="Full Name" required />
+              <Input className="bg-white/90" type="text" placeholder="Email" required />
+              <TextArea className="bg-white/90" placeholder="Message" required />
               <button
-                className="bg-blue_5 text-white py-2 px-4 rounded-lg"
+                className="bg-white font-medium text-blue_5 py-2 px-4 rounded-lg"
                 type="submit"
               >
                 Send
               </button>
             </form>
           </div>
-          <div className="grid">
+          <div className="grid text-white">
             <div className="flex gap-2">
               <Phone />
               +254 711 241 878
@@ -43,7 +43,7 @@ const Contactme = () => {
               <Github />
             </div>
           </div>
-        </div>{" "}
+        </div>
       </CardWrapper>
     </MaxWidthWrapper>
   );

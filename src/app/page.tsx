@@ -30,7 +30,7 @@ export default function Home() {
               transition={{ duration: 1 }}
               className="flex space-y-5 flex-col justify-center"
             >
-              <p className="font-bold text-4xl">Helo, I&apos;m</p>
+              <p className="font-bold text-4xl text-white">Helo, I&apos;m</p>
               <span className="text-blue_5 text-4xl font-bold">
                 Shadrack Cheruiyot
               </span>
@@ -47,7 +47,7 @@ export default function Home() {
                 <button className="bg-blue_5 text-white py-2 px-4 rounded-lg">
                   Hire Me
                 </button>
-                <button className="flex items-center">
+                <button className="flex bg-white py-2 px-4 rounded-lg items-center">
                   Download CV
                   <DownloadIcon />
                 </button>
@@ -59,7 +59,7 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <Image
-                className="rounded-tl-[40%] rounded-br-[40%] border-2 border-blue_5"
+                className="rounded-tl-[5px] rounded-br-[5px] rounded-tr-[40%] rounded-bl-[40%]"
                 height={390}
                 src={sheddiey}
                 alt="Sheddiey"
