@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="bg-[url('/winter-7593872.jpg')] bg-center bg-cover ">
+          <div className="bg-[url('/winter-7593872.jpg')] bg-cover bg- ">
           <Navbar />
           <main className="flex  flex-col min-h-[calc(100vh-3.5rem-1px)]">
             <div className="flex-1 flex flex-col h-full">{children}</div>
@@ -32,6 +32,7 @@ export default function RootLayout({
             <Footer />
           </main>
         </div>
+        
       </body>
     </html>
   );
