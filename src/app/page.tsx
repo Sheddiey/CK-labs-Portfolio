@@ -20,8 +20,8 @@ export default function Home() {
   return (
     <MaxWidthWrapper>
       <CardWrapper>
-        <div className="grid px-5 items-center h-[calc(100vh-3.5rem)]">
-          <div className="grid space-x-5 grid-cols-2">
+        <div className="grid px-5 items-center min-h-[calc(100vh-3.5rem)]">
+          <div className="grid lg:space-x-5 py-5 content-between h-full lg:grid-cols-2">
             <motion.div
               whileInView={{
                 x: 0,
@@ -34,7 +34,7 @@ export default function Home() {
               <span className="text-blue_5 text-4xl font-bold">
                 Shadrack Cheruiyot
               </span>
-              <p className="text-white">
+              <p className="font-medium">
                 I&apos;m a web developer, passionate about crafting accessible
                 and user-friendly websites. With expertise in React for dynamic
                 interfaces and Tailwind CSS for sleek designs, I ensure your
@@ -59,7 +59,7 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <Image
-                className="rounded-tl-[5px] rounded-br-[5px] rounded-tr-[40%] rounded-bl-[40%]"
+                className="rounded-tl-[5px] md:block hidden rounded-br-[5px] w-full rounded-tr-[40%] rounded-bl-[40%]"
                 height={390}
                 src={sheddiey}
                 alt="Sheddiey"
@@ -70,7 +70,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="flex justify-center gap-4"
+            className="flex justify-center md:gap-4 flex-wrap gap-2.5 py-5"
           >
             <Image src={react} alt="CSS3" width={40} height={40} />
             <Image src={javaScript} alt="JavaScript" width={40} height={40} />

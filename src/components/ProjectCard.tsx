@@ -26,74 +26,75 @@ const ProjectsCard = ({ project, index, range, target, progress }: any) => {
   const { screen } = context;
 
   return (
-    <motion.div
-      ref={ref}
-      className={`w-full flex align-center justify-center sticky mb-[20px]`}
-      style={{ top: `calc(15% + ${index * 25}px)` }}
-    >
+    
       <motion.div
-        className={`w-[100%] xl:h-[575px] rounded-[5px] md:rounded-[5px] xl:gap-[40px] ${
-          screen === "xl" || screen === "2xl" ? "p-[40px]" : ""
-        }
-      `}
-        style={{
-          scale: cardScale,
-          backgroundColor: project.accent,
-          display: "flex",
-          flexDirection:
-            screen === `sm` || screen === `md` || screen === `lg`
-              ? "column-reverse"
-              : index % 2 === 0
-              ? "row-reverse"
-              : "row",
-          overflow: "hidden",
-        }}
+        ref={ref}
+        className={`flex sm:p-2.5 md:px-16 align-center justify-center sticky mb-5`}
+        style={{ top: `calc(15% + ${index * 25}px)` }}
       >
-        <div
-          className="flex flex-col p-5"
+        <motion.div
+          className={`w-full bg-[#589b76] shadow-xl border-green-300/50 border backdrop-blur-[10px] xl:h-[575px] rounded-xl md:rounded-xl xl:gap-[40px] ${
+            screen === "xl" || screen === "2xl" ? "p-[40px]" : ""
+          }
+      `}
           style={{
-            width:
-              screen === "sm" || screen === "md" || screen === "lg"
-                ? "100%"
-                : "50%",
+            scale: cardScale,
+            display: "flex",
+            flexDirection:
+              screen === `sm` || screen === `md` || screen === `lg`
+                ? "column-reverse"
+                : index % 2 === 0
+                ? "row-reverse"
+                : "row",
+            overflow: "hidden",
           }}
         >
-          <h3>{project.title}</h3>
-          <p>{project.description}</p>
-          <div className="flex flex-wrap mt-10 gap-3 items-center">
-            {project.tags.map((tag: any, index: number) => (
-              <span key={index}>{tag}</span>
-            ))}
-            <Link href={project.link} target="_blank">
-              <span className="self-center">
-                Visit <HiOutlineExternalLink className="inline" />
-              </span>
-            </Link>
+          <div
+            className="flex flex-col p-5"
+            style={{
+              width:
+                screen === "sm" || screen === "md" || screen === "lg"
+                  ? "100%"
+                  : "50%",
+            }}
+          >
+            <h3 className="text-blue_5 font-bold text-2xl">{project.title}</h3>
+            <p className="font-medium">{project.description}</p>
+            <div className="flex flex-wrap mt-10 gap-3 items-center">
+              {project.tags.map((tag: any, index: number) => (
+                <span key={index}>{tag}</span>
+              ))}
+              <Link href={project.link} target="_blank">
+                <span className="self-center">
+                  Visit <HiOutlineExternalLink className="inline" />
+                </span>
+              </Link>
+            </div>
           </div>
-        </div>
-        <div
-          className={`xl:h-[435px] overflow-hidden relative ${
-            screen === "sm" || screen === "md" || screen === "lg"
-              ? ""
-              : "rounded-[20px]"
-          }`}
-          style={{
-            width:
+          <div
+            className={`xl:h-[435px] overflow-hidden relative ${
               screen === "sm" || screen === "md" || screen === "lg"
-                ? "100%"
-                : "50%",
-          }}
-        >
-          <motion.div className={`w-full h-full`} style={{ scale }}>
-            <Image
-              src={project.image}
-              alt={project.title}
-              className="object-cover h-[300px] lg:h-[435px] w-[100%]"
-            />
-          </motion.div>
-        </div>
+                ? ""
+                : "rounded-[20px]"
+            }`}
+            style={{
+              width:
+                screen === "sm" || screen === "md" || screen === "lg"
+                  ? "100%"
+                  : "50%",
+            }}
+          >
+            <motion.div className={`w-full h-full`} style={{ scale }}>
+              <Image
+                src={project.image}
+                alt={project.title}
+                className="object-cover h-[300px] lg:h-[435px] w-[100%]"
+              />
+            </motion.div>
+          </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    
   );
 };
 

@@ -8,7 +8,7 @@ const Contactme = () => {
   return (
     <MaxWidthWrapper>
       <CardWrapper>
-        <div className="grid grid-cols-2 p-5 space-x-10 my-10 py-5 ">
+        <div className="grid md:grid-cols-2 p-5 space-y-10 md:space-x-10 my-10 py-5 ">
           <div>
             <form className="space-y-4 grid">
               <p className="font-bold text-white text-2xl">
@@ -25,7 +25,7 @@ const Contactme = () => {
               </button>
             </form>
           </div>
-          <div className="grid text-white">
+          <div className="grid space-y-5 text-white">
             <div className="flex gap-2">
               <Phone />
               +254 711 241 878

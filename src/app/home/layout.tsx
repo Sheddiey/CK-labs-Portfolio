@@ -1,16 +1,21 @@
-'use client'
 
-import { Application } from "@/context";
+import { Metadata } from "next";
 
 interface PageProps {
     children: React.ReactNode;
 }
 
+export const metadata: Metadata = {
+  title: "Sheddiey",
+  description: "Personal website",
+};
+
+
 const Page: React.FC<PageProps> = ({ children }) => {
     return (
-      <Application>
+      <div>
         {children}
-      </Application>
+      </div>
     );
   };
   

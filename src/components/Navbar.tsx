@@ -8,7 +8,7 @@ const Navbar = () => {
         <MaxWidthWrapper>
           <div className="flex h-12 items-center justify-between">
             <p>Logo</p>
-            <div className="h-full text-white font-medium flex items-center space-x-4">
+            <div className="h-full hidden  text-white font-medium md:flex items-center space-x-4">
               <p className="cursor-pointer">Home</p>
               <p className="cursor-pointer">About</p>
               <p className="cursor-pointer">My Work</p>

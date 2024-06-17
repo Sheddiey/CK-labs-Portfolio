@@ -9,7 +9,7 @@ const CardWrapper = ({
 }) => {
   return (
     <div
-      className={`mt-5 rounded-xl bg-green-900/50 shadow-black shadow-lg backdrop-blur-[2px] ${className}`}
+      className={`mt-5 rounded-xl bg-green_3/50 shadow-black shadow-lg backdrop-blur-[2px] ${className}`}
     >
       {children}
     </div>

@@ -3,10 +3,11 @@
 import { motion } from "framer-motion";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import CardWrapper from "./CardWrapper";
-import aboutImg from '../../public/manhattan-3866140.jpg'
+import aboutImg from "../../public/7.jpg";
 import Image from "next/image";
 
 const About = () => {
+
   return (
     <MaxWidthWrapper>
       <CardWrapper>
@@ -14,8 +15,14 @@ const About = () => {
           <p className="text-center font-bold text-2xl mb-5 text-white">
             About me
           </p>
-          <div className="overflow-hidden gap-5 grid grid-cols-2 mb-10">
-            <div><Image src={aboutImg} alt="about Image"/></div>
+          <div className="overflow-hidden gap-5 grid lg:grid-cols-2 mb-10">
+            <motion.div>
+              <Image
+                src={aboutImg}
+                className="rounded-xl"
+                alt="about Image"
+              />
+            </motion.div>
             <motion.div
               whileInView={{
                 x: 0,
