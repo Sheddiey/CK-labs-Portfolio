@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -12,7 +12,6 @@ import { Application } from "@/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,18 +22,24 @@ export default function RootLayout({
       <body className={inter.className}>
         <Application>
           <div className="bg-[url('/10.jpg')] bg-center bg-cover bg-">
-          <Navbar />
-          <main className="flex flex-col min-h-[calc(100vh-3.5rem-1px)]">
-            <div className="flex-1 bg-cover bg- flex flex-col h-full">{children}</div>
-            <About />
-            <Projects />
-            <Contactme />
-            <Footer />
-          </main>
-        </div>
+            <Navbar />
+            <main className="flex flex-col min-h-[calc(100vh-3.5rem-1px)]">
+              <div id="Home" className="flex-1 bg-cover bg- flex flex-col h-full">
+                {children}
+              </div>
+              <div id="About">
+                <About />
+              </div>
+              <div id="MyWork">
+                <Projects />
+              </div>
+              <div id="ContactMe">
+                <Contactme />
+              </div>
+              <Footer />
+            </main>
+          </div>
         </Application>
-          
-        
       </body>
     </html>
   );

@@ -11,7 +11,7 @@ const About = () => {
   return (
     <MaxWidthWrapper>
       <CardWrapper>
-        <div className="p-5 rounded-xl ">
+        <div id="Home" className="p-5 rounded-xl ">
           <p className="text-center font-bold text-2xl mb-5 text-white">
             About me
           </p>

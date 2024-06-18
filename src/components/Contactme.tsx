@@ -3,6 +3,8 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import { Input } from "antd";
 import { Github, Linkedin, Mail, MapPinIcon, Phone } from "lucide-react";
 import CardWrapper from "./CardWrapper";
+import Link from "next/link";
+import { FaGithub, FaUpwork } from "react-icons/fa6";
 
 const Contactme = () => {
   return (
@@ -38,10 +40,23 @@ const Contactme = () => {
               <MapPinIcon />
               Remote
             </div>
-            <div className="flex gap-2">
-              <Linkedin />
-              <Github />
-            </div>
+            <div className="flex text-2xl space-x-5">
+                <Link
+                  target="_blank"
+                  href="https://www.upwork.com/freelancers/~0152b4d1bddec8e507"
+                >
+                  <FaUpwork className="cursor-pointer hover:text-blue_5  hover:scale-125 transition-all duration-300 " />
+                </Link>
+                <Link href="https://github.com/Sheddiey" target="_blank">
+                  <FaGithub className="cursor-pointer hover:text-blue_5  hover:scale-125 transition-all duration-300 " />
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/sheddiey/"
+                  target="_blank"
+                >
+                  <Linkedin className="cursor-pointer hover:text-blue_5  hover:scale-125 transition-all duration-300 " />
+                </Link>
+              </div>
           </div>
         </div>
       </CardWrapper>

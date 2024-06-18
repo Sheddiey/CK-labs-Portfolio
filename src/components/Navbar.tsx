@@ -6,22 +6,17 @@ import { motion } from "framer-motion";
 import {
   slideBracketLeft,
   slideBracketRight,
+  slideInFromLeft,
   slideInFromRight,
 } from "@/utils/motion";
 import FadeinOnView from "@/utils/FadeinOnView";
+import { Link } from "react-scroll";
+import Image from "next/image";
+import logo from "../../public/logo3.png";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState<string | null>(null);
-  const navItems = ["Home", "About", "My work", "Contact Me"];
-
-  const scrollToSection = (sectionId: string) => {
-    if (window.location.pathname !== "/") {
-      window.location.href = "/";
-    }
-
-    const section = document.getElementById(sectionId) as HTMLElement;
-    section.scrollIntoView({ behavior: "smooth" });
-  };
+  const navItems = ["Home", "About", "MyWork", "ContactMe"]; 
 
   const context = useContext(AppContext);
 
@@ -32,17 +27,18 @@ const Navbar = () => {
   const { isNavOpen, setIsNavOpen } = context;
 
   return (
-    <nav className="sticky z-[100] top-0">
-      <div className="px-5 h-12 inset-x-0 w-full shadow-sm shadow-black  bg-green-900/50 backdrop-blur-xl transition-all">
+    <nav className="z-[100] top-0">
+      <div className="px-5 h-12 inset-x-0 w-full shadow-sm shadow-black  bg-green_3/50 backdrop-blur-xl transition-all">
         <MaxWidthWrapper>
           <div className="flex h-12 items-center relative justify-between">
-            <p>Logo</p>
-
-            <motion.ul className=" flex gap-5">
+            <motion.div  variants={slideInFromLeft(0.2)} >
+              <Image className="cursor-pointer" height={70} width={70} src={logo} alt="logo" />
+            </motion.div>
+            <motion.ul className="flex gap-6 ">
               {navItems.map((item, index) => (
                 <motion.li
                   key={item}
-                  className="text-white cursor-pointer"
+                  className="text-white flex relative cursor-pointer"
                   onMouseEnter={() => setIsHovered(item)}
                   onMouseLeave={() => setIsHovered(null)}
                   variants={slideInFromRight(0.2 * index)}
@@ -55,18 +51,19 @@ const Navbar = () => {
                   >
                     &lt;
                   </motion.span>
-                  <a
-                    id={item}
-                    onClick={() => scrollToSection(`${item}`)}
+                  <Link
+                    to={item}
+                    smooth={true}
+                    duration={500}
                     className="hover:text-blue_5 md:flex hidden font-bold"
                   >
-                    {item}
-                  </a>
+                    {item.replace(/([A-Z])/g, " $1").trim()}
+                  </Link>
                   <motion.span
                     variants={slideBracketRight}
                     initial="hidden"
                     animate={isHovered === item ? "hover" : "hidden"}
-                    className="absolute font-bold text-blue_5"
+                    className="absolute -right-[10px] font-bold text-blue_5"
                   >
                     /&#62;
                   </motion.span>
@@ -75,8 +72,7 @@ const Navbar = () => {
             </motion.ul>
 
             {isNavOpen && (
-              <motion.div className="top-0 w-[100vw] -left-8 absolute bg-blue_3/80 backdrop-blur-[20px]"
-                >
+              <motion.div className="top-0 w-[100vw] -left-8 absolute bg-blue_3/80 backdrop-blur-[20px]">
                 <motion.ul className="w-full flex flex-col justify-center">
                   {navItems.map((item, index) => (
                     <FadeinOnView delay={0.2 * index} key={index}>
@@ -89,14 +85,16 @@ const Navbar = () => {
                         >
                           &lt;
                         </motion.span>
-                        <a
+                        <Link
+                          to={item}
+                          smooth={true}
+                          duration={500}
                           onClick={() => {
                             setIsNavOpen(false);
-                            scrollToSection(`${item}`);
                           }}
                         >
-                          {item}
-                        </a>
+                          {item.replace(/([A-Z])/g, " $1").trim()}
+                        </Link>
                         <motion.span
                           variants={slideBracketRight}
                           initial="hidden"

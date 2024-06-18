@@ -58,7 +58,7 @@ export const slideBracketRight = {
     opacity: 0,
   },
   hover: {
-    x: 3,
+    x: 10,
     opacity: 1,
     transition: {
       x: { duration: 0.5, ease: "easeOut" },
