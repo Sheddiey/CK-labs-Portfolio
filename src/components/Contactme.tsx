@@ -1,36 +1,38 @@
 import TextArea from "antd/es/input/TextArea";
 import MaxWidthWrapper from "./MaxWidthWrapper";
-import { Input } from "antd";
 import { Github, Linkedin, Mail, MapPinIcon, Phone } from "lucide-react";
 import CardWrapper from "./CardWrapper";
 import Link from "next/link";
 import { FaGithub, FaUpwork } from "react-icons/fa6";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { Input } from "antd";
 
 const Contactme = () => {
-  const form = useRef();
+  const form = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_5kq3b2l",
-        "template_ftf88vs",
-        form.current,
-        "s1QzsaEZUoxbOStqi"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          alert("Message sent");
-        },
-        (error) => {
-          console.log(error.text);
-          alert("Message not sent! Try again.");
-        }
-      );
+    if (form.current) {
+      emailjs
+        .sendForm(
+          "service_5kq3b2l",
+          "template_ftf88vs",
+          form.current,
+          "s1QzsaEZUoxbOStqi"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            alert("Message sent");
+          },
+          (error) => {
+            console.log(error.text);
+            alert("Message not sent! Try again.");
+          }
+        );
+    }
   };
 
   return (
@@ -49,7 +51,6 @@ const Contactme = () => {
                 placeholder="Full Name"
                 required
               />
-
               <Input
                 className="bg-white/90"
                 type="email"
@@ -57,7 +58,6 @@ const Contactme = () => {
                 placeholder="Email"
                 required
               />
-
               <TextArea
                 className="bg-white/90"
                 name="message"
