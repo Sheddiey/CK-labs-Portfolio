@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import CardWrapper from "./CardWrapper";
-import MaxWidthWrapper from "./MaxWidthWrapper";
 import { useScroll, motion } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import FadeinOnView from "@/utils/FadeinOnView";

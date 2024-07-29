@@ -1,18 +1,53 @@
+import { useRef, FormEvent, useState, ChangeEvent } from "react";
+import { Input, message as antdMessage } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import MaxWidthWrapper from "./MaxWidthWrapper";
 import { Github, Linkedin, Mail, MapPinIcon, Phone } from "lucide-react";
-import CardWrapper from "./CardWrapper";
 import Link from "next/link";
 import { FaGithub, FaUpwork } from "react-icons/fa6";
-import { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { Input } from "antd";
+import MaxWidthWrapper from "./MaxWidthWrapper";
+import CardWrapper from "./CardWrapper";
+import { z } from "zod";
 
-const Contactme = () => {
+const formSchema = z.object({
+  user_name: z.string().nonempty("Full Name is required"),
+  user_email: z.string().email("Invalid email address"),
+  message: z.string().nonempty("Message is required"),
+});
+
+type FormData = z.infer<typeof formSchema>;
+
+const Contactme: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [formData, setFormData] = useState<FormData>({
+    user_name: '',
+    user_email: '',
+    message: ''
+  });
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: undefined }));
+  };
+
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const validation = formSchema.safeParse(formData);
+
+    if (!validation.success) {
+      const fieldErrors: Partial<Record<keyof FormData, string>> = {};
+      validation.error.errors.forEach((error) => {
+        if (error.path.length > 0) {
+          const fieldName = error.path[0] as keyof FormData;
+          fieldErrors[fieldName] = error.message;
+        }
+      });
+      setErrors(fieldErrors);
+      return;
+    }
 
     if (form.current) {
       emailjs
@@ -25,11 +60,16 @@ const Contactme = () => {
         .then(
           (result) => {
             console.log(result.text);
-            alert("Message sent");
+            antdMessage.success("Message sent successfully!");
+            setFormData({
+              user_name: '',
+              user_email: '',
+              message: ''
+            });
           },
           (error) => {
             console.log(error.text);
-            alert("Message not sent! Try again.");
+            antdMessage.error("Message not sent! Please try again.");
           }
         );
     }
@@ -40,32 +80,60 @@ const Contactme = () => {
       <CardWrapper>
         <div className="grid md:grid-cols-2 p-5 space-y-10 md:space-x-10 my-10 py-5">
           <div>
-            <form className="space-y-4 grid" ref={form} onSubmit={sendEmail}>
+            <form
+              className="space-y-4 grid"
+              ref={form}
+              onSubmit={sendEmail}
+            >
               <p className="font-bold text-white text-2xl">
                 Get in <span className="text-blue_5">Touch</span>
               </p>
+              <label htmlFor="name" className="sr-only">
+                Full Name
+              </label>
               <Input
+                id="name"
                 className="bg-white/90"
                 type="text"
-                name="user_name"
                 placeholder="Full Name"
-                required
+                value={formData.user_name}
+                onChange={handleInputChange}
+                status={errors.user_name ? "error" : undefined}
               />
+              {errors.user_name && (
+                <p className="text-red-500">{errors.user_name}</p>
+              )}
+              <label htmlFor="email" className="sr-only">
+                Email
+              </label>
               <Input
+                id="email"
                 className="bg-white/90"
                 type="email"
-                name="user_email"
                 placeholder="Email"
-                required
+                value={formData.user_email}
+                onChange={handleInputChange}
+                status={errors.user_email ? "error" : undefined}
               />
+              {errors.user_email && (
+                <p className="text-red-500">{errors.user_email}</p>
+              )}
+              <label htmlFor="message" className="sr-only">
+                Message
+              </label>
               <TextArea
+                id="message"
                 className="bg-white/90"
-                name="message"
                 placeholder="Message"
-                required
+                value={formData.message}
+                onChange={handleInputChange}
+                status={errors.message ? "error" : undefined}
               />
+              {errors.message && (
+                <p className="text-red-500">{errors.message}</p>
+              )}
               <button
-                className="bg-blue_5 font-medium text-white hover:bg-blue_5/80 transition-colors duration-300  py-2 px-4 rounded-lg"
+                className="bg-blue_5 font-medium text-white hover:bg-blue_5/80 transition-colors duration-300 py-2 px-4 rounded-lg"
                 type="submit"
               >
                 Send
@@ -74,15 +142,15 @@ const Contactme = () => {
           </div>
           <div className="grid space-y-5 text-white">
             <div className="flex gap-2">
-              <Phone />
+              <Phone aria-label="Phone number" />
               +254 711 241 878
             </div>
             <div className="flex gap-2">
-              <Mail />
+              <Mail aria-label="Email address" />
               shadrackcheruiyot429@gmail.com
             </div>
             <div className="flex gap-2">
-              <MapPinIcon />
+              <MapPinIcon aria-label="Location" />
               Remote
             </div>
             <div className="flex place-content-center text-2xl space-x-5">
