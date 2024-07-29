@@ -15,9 +15,9 @@ const Footer = () => {
       <MaxWidthWrapper>
         <CardWrapper>
           <div className="h-full pt-5">
-            <div className="flex justify-evenly">
+            <div className="grid grid-cols-3 content-around">
               <Image
-                className=""
+                className="place-self-center"
                 height={200}
                 width={200}
                 src={logo}
@@ -26,7 +26,7 @@ const Footer = () => {
               <motion.ul className="grid">
                 {footerItems.map((item, index) => (
                   <motion.li
-                    className="cursor-pointer text-white font-semibold hover:text-blue_5 transition-colors duration-300"
+                    className="cursor-pointer w-max text-white font-semibold hover:text-blue_5 transition-colors duration-300"
                     key={item}
                   >
                     <ScrollLink to={item} smooth={true} duration={500}>
