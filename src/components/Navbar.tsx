@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { AppContext } from "@/context";
-import { AlignCenter, X } from "lucide-react";
+import { AlignCenter } from "lucide-react";
 import { motion } from "framer-motion";
 import {
   slideBracketLeft,
@@ -13,6 +13,7 @@ import FadeinOnView from "@/utils/FadeinOnView";
 import { Link } from "react-scroll";
 import Image from "next/image";
 import logo from "../../public/logo3.png";
+import { Drawer } from "antd";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState<string | null>(null);
@@ -44,7 +45,7 @@ const Navbar = () => {
                 alt="logo"
               />
             </motion.div>
-            <motion.ul className="flex gap-6 ">
+            <motion.ul className="md:flex hidden gap-6 ">
               {navItems.map((item, index) => (
                 <motion.li
                   key={item}
@@ -65,7 +66,7 @@ const Navbar = () => {
                     to={item}
                     smooth={true}
                     duration={500}
-                    className="hover:text-blue_5 md:flex hidden font-bold"
+                    className="md:flex hidden font-bold"
                   >
                     {item.replace(/([A-Z])/g, " $1").trim()}
                   </Link>
@@ -80,56 +81,81 @@ const Navbar = () => {
                 </motion.li>
               ))}
             </motion.ul>
-
-            {isNavOpen && (
-              <motion.div className="top-0 w-[100vw] h-[100vh] -left-8 bg-white/70 backdrop-blur-[5px] absolute z-[999] ">
-                <motion.ul className="w-full flex flex-col justify-center">
-                  {navItems.map((item, index) => (
-                    <FadeinOnView delay={0.2 * index} key={index}>
-                      <motion.li className="text-blue_5  font-bold cursor-pointer text-2xl py-6 text-center">
-                        <motion.span
-                          variants={slideBracketLeft}
-                          initial="hidden"
-                          animate={isHovered === item ? "hover" : "hidden"}
-                          className="absolute font-bold text-blue_5"
-                        >
-                          &lt;
-                        </motion.span>
-                        <Link
-                          to={item}
-                          smooth={true}
-                          duration={500}
-                          onClick={() => {
-                            setIsNavOpen(false);
-                          }}
-                        >
-                          {item.replace(/([A-Z])/g, " $1").trim()}
-                        </Link>
-                        <motion.span
-                          variants={slideBracketRight}
-                          initial="hidden"
-                          animate={isHovered === item ? "hover" : "hidden"}
-                          className="absolute font-bold text-blue_5"
-                        >
-                          /&#62;
-                        </motion.span>
-                      </motion.li>
-                    </FadeinOnView>
-                  ))}
-                </motion.ul>
-              </motion.div>
-            )}
-
-            <motion.button
-              onClick={() => setIsNavOpen(!isNavOpen)}
-              className="md:hidden cursor-pointer z-[999]"
-            >
-              {isNavOpen ? <X /> : <AlignCenter className="text-white"/>}
-            </motion.button>
+            <motion.div className="md:hidden z-[999]">
+              <NavSmallScreens navItems={navItems} />
+            </motion.div>
           </div>
         </MaxWidthWrapper>
       </div>
     </nav>
+  );
+};
+
+interface NavSmallScreensProps {
+  navItems: string[];
+}
+
+const NavSmallScreens: React.FC<NavSmallScreensProps> = ({ navItems }) => {
+  const [open, setOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState<string | null>(null);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <button onClick={showDrawer}>
+        <AlignCenter className="text-white" />
+      </button>
+      <Drawer
+        drawerStyle={{
+          backgroundColor: "rgba(255, 255, 255, 0.5)",
+          backdropFilter: "blur(5px)",
+        }}
+        onClose={onClose}
+        open={open}
+      >
+        <motion.div className="">
+          <motion.ul className="w-full flex flex-col justify-center">
+            {navItems.map((item, index) => (
+              <FadeinOnView delay={0.2 * index} key={index}>
+                <motion.li className="text-blue_5 font-bold cursor-pointer text-2xl py-6 text-center">
+                  <motion.span
+                    variants={slideBracketLeft}
+                    initial="hidden"
+                    animate={isHovered === item ? "hover" : "hidden"}
+                    className="absolute font-bold text-blue_5"
+                  >
+                    &lt;
+                  </motion.span>
+                  <Link
+                    to={item}
+                    smooth={true}
+                    duration={500}
+                    onClick={() => onClose()}
+                  >
+                    {item.replace(/([A-Z])/g, " $1").trim()}
+                  </Link>
+                  <motion.span
+                    variants={slideBracketRight}
+                    initial="hidden"
+                    animate={isHovered === item ? "hover" : "hidden"}
+                    className="absolute font-bold text-blue_5"
+                  >
+                    /&#62;
+                  </motion.span>
+                </motion.li>
+              </FadeinOnView>
+            ))}
+          </motion.ul>
+        </motion.div>
+      </Drawer>
+    </>
   );
 };
 

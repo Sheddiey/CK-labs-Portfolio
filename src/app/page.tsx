@@ -21,7 +21,7 @@ export default function Home() {
     <MaxWidthWrapper>
       <CardWrapper>
         <div className="grid px-5 items-center min-h-[calc(100vh-3.5rem)]">
-          <div className="grid lg:space-x-5 py-5 content-between h-full lg:grid-cols-2">
+          <div className="grid lg:space-x-5 md:space-y-4 py-5 content-between h-full lg:grid-cols-2">
             <motion.div
               whileInView={{
                 x: 0,
@@ -35,13 +35,10 @@ export default function Home() {
                 Shadrack Cheruiyot
               </span>
               <p className="font-medium">
-                I&apos;m a web developer, passionate about crafting accessible
-                and user-friendly websites. With expertise in React for dynamic
-                interfaces and Tailwind CSS for sleek designs, I ensure your
-                site looks great on any device. Leveraging Git for collaboration
-                and Firebase for backend needs, I&apos;m committed to delivering
-                top-notch web solutions. I am seeking a full-time position as a
-                Front-end Web Developer.
+                A web developer specializing in dynamic and visually stunning
+                web experiences. I&apos;m dedicated to making the web more
+                accessible, intuitive, and user-friendly. Let&apos;s bring your
+                ideas to life with creativity and precision.
               </p>
               <div className="flex space-x-4 mt-5">
                 <button className="bg-blue_5 text-white py-2 px-4 rounded-lg">
