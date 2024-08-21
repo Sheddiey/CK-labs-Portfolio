@@ -13,7 +13,7 @@ import FadeinOnView from "@/utils/FadeinOnView";
 import { Link } from "react-scroll";
 import Image from "next/image";
 import logo from "../../public/logo3.png";
-import { Drawer } from "antd";
+import { Drawer } from "antd/";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState<string | null>(null);
