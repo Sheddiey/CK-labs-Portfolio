@@ -15,6 +15,8 @@ import node from "../../public/nodejs-original.svg";
 import tailwind from "../../public/tailwindcss-plain.svg";
 import typeScript from "../../public/typescript-original.svg";
 import CardWrapper from "@/components/CardWrapper";
+import { Link as ReactScrollLink } from "react-scroll";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -41,13 +43,17 @@ export default function Home() {
                 ideas to life with creativity and precision.
               </p>
               <div className="flex space-x-4 mt-5">
-                <button className="bg-blue_5 text-white py-2 px-4 rounded-lg">
-                  Hire Me
-                </button>
-                <button className="flex bg-white py-2 px-4 rounded-lg items-center">
-                  Download CV
-                  <DownloadIcon />
-                </button>
+                <ReactScrollLink smooth={true} duration={500} to="ContactMe">
+                  <button className="bg-blue_5 font-medium text-white hover:bg-blue_5/80 transition-colors duration-300 py-2 px-4 rounded-lg">
+                    Hire Me
+                  </button>
+                </ReactScrollLink>
+                <Link href="https://blush-trish-85.tiiny.site/" target="_blank">
+                  <button className="flex bg-white hover:bg-white/80 py-2 px-4 rounded-lg items-center transition-colors duration-300">
+                    Download CV
+                    <DownloadIcon />
+                  </button>
+                </Link>
               </div>
             </motion.div>
             <motion.div
