@@ -9,15 +9,26 @@
 import k from "../../public/1.jpg";
 import genesis from "@/../public/genesis.png";
 import restapi from "@/../public/restapi.png";
+import inventory from '@/../public/inventorymanagement.png'
+import techops from '@/../public/techops.png'
 
 export const projects = [
   {
     title: "TechOps",
-    link: "https://sheddiey.web.app/",
+    link: "https://techops-v-1-0-0.vercel.app/",
     tags: ["React", "redux", "tailwindCSS"],
-    image: k,
+    image: techops,
     description:
       "Tech-Hub is a dynamic platform that inspires and motivates individuals to enhance their tech skills by contributing to TechOps open-source projects. It fosters a collaborative environment where users can engage with real-world challenges, share knowledge, and develop expertise, all while making meaningful contributions to the tech community.",
+    accent: "green_3",
+  },
+  {
+    title: "Inventory Management Dashboard",
+    link: "https://main.d1wzy4x9ymgmru.amplifyapp.com/",
+    tags: ["Nextjs", "redux", "tailwindCSS", "Node", "postgresQl"],
+    image: inventory,
+    description:
+      "The Inventory Management Dashboard is a web-based application with a frontend built using Next.js and a backend developed with Node.js and PostgreSQL. Both the frontend and backend are deployed on AWS, providing a scalable and reliable environment for managing inventory data. The dashboard allows users to track, manage, and analyze inventory levels, making it a crucial tool for efficient supply chain management.",
     accent: "green_3",
   },
   {
