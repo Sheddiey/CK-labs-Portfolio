@@ -48,7 +48,7 @@ export default function Home() {
                     Hire Me
                   </button>
                 </ReactScrollLink>
-                <Link href="https://blush-trish-85.tiiny.site/" target="_blank">
+                <Link href="/" target="_blank">
                   <button className="flex bg-white hover:bg-white/80 py-2 px-4 rounded-lg items-center transition-colors duration-300">
                     Download CV
                     <DownloadIcon />

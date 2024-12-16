@@ -33,8 +33,8 @@ const Projects = () => {
   return (
     
         <motion.div ref={ref} className="w-full flex flex-col align-center justify-center relative">
-          <FadeinOnView className="text-white md:text-[44px] text-[26px] mb-[24px] text-center sticky top-2.5 pt-[20px]">
-            <h1 className="sticky  top-2.5">My work</h1>
+          <FadeinOnView className="text-white md:text-[34px] text-[26px] text-center sticky top-1.5 pt-[20px]">
+            <h4 className="sticky font-semibold top-1.5">My work</h4>
           </FadeinOnView>
           {projects.map((project, index) => {
             const target = 1- (projects.length - index) * 0.05;

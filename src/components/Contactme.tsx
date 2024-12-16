@@ -28,6 +28,7 @@ const Contactme: React.FC = () => {
     user_email: "",
     message: "",
   });
+  const [isSending, setIsSending] = useState(false); // New state for sending status
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -54,6 +55,7 @@ const Contactme: React.FC = () => {
     }
 
     if (formRef.current) {
+      setIsSending(true); // Disable the button and change text
       emailjs
         .sendForm(
           "service_5kq3b2l",
@@ -76,7 +78,8 @@ const Contactme: React.FC = () => {
             console.log(error.text);
             antdMessage.error("Message not sent! Please try again.");
           }
-        );
+        )
+        .finally(() => setIsSending(false)); // Reset the button state
     }
   };
 
@@ -147,10 +150,13 @@ const Contactme: React.FC = () => {
                 <p className="text-red-500">{errors.message}</p>
               )}
               <button
-                className="bg-blue_5 font-medium text-white hover:bg-blue_5/80 transition-colors duration-300 py-2 px-4 rounded-lg"
+                className={`bg-blue_5 font-medium text-white hover:bg-blue_5/80 transition-colors duration-300 py-2 px-4 rounded-lg ${
+                  isSending ? "cursor-not-allowed opacity-70" : ""
+                }`}
                 type="submit"
+                disabled={isSending}
               >
-                Send
+                {isSending ? "Sending..." : "Send"}
               </button>
             </form>
           </div>

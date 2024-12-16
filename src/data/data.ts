@@ -9,17 +9,17 @@
 import k from "../../public/1.jpg";
 import genesis from "@/../public/genesis.png";
 import restapi from "@/../public/restapi.png";
-import inventory from '@/../public/inventorymanagement.png'
-import techops from '@/../public/techops.png'
+import inventory from "@/../public/inventorymanagement.png";
+import techops from "@/../public/techops.png";
 
 export const projects = [
   {
     title: "TechOps",
-    link: "https://techops-v-1-0-0.vercel.app/",
+    link: "https://www.techopssapex.com/",
     tags: ["React", "redux", "tailwindCSS"],
     image: techops,
     description:
-      "Tech-Hub is a dynamic platform that inspires and motivates individuals to enhance their tech skills by contributing to TechOps open-source projects. It fosters a collaborative environment where users can engage with real-world challenges, share knowledge, and develop expertise, all while making meaningful contributions to the tech community.",
+      "TechOps Apex Limited is a visionary tech startup dedicated to transforming Africa’s digital and social landscape by equipping learners with the skills and resources to drive sustainable growth and innovation. With a mission to empower communities, we focus on building scalable software solutions and delivering high-quality EdTech programs that empower individuals and organizations to excel in a rapidly advancing world.",
     accent: "green_3",
   },
   {
@@ -37,7 +37,7 @@ export const projects = [
     tags: ["React", "redux", "tailwindCSS"],
     image: genesis,
     description:
-      "Genesis is a modern eCommerce platform offering a range of integrated features and functionalities designed to enhance the experience for both vendors and customers. Vendors can register and post their products in the marketplace, while customers can sign in to explore and purchase these products. The platform also provides shipping services across East Africa and from East Africa to the USA, on-demand printing services, and a 'Buy Now, Pay Later' feature that allows less fortunate households to acquire products and pay later. Genesis aims to create a comprehensive and user-friendly eCommerce environment that caters to diverse needs.",
+      "Genesis is a modern eCommerce platform connecting vendors and customers with features like product listings, on-demand printing, and a 'Buy Now, Pay Later' option. It offers shipping across East Africa and to the USA, creating a user-friendly marketplace for diverse needs.",
     accent: "green_3",
   },
   {
